@@ -3,7 +3,7 @@ package fr.lionelcollidor;
 import java.util.Scanner;
 
 public class Main {
-    // Variables
+    // Variables globales
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class Main {
         int convert = 0;
         String again;
         double temperature = 0;
-        // End variables
+        // Fin[] variables
 
         menu();
         do {
@@ -35,8 +35,20 @@ public class Main {
                     } while (again != "O" || again == "N");
                     break;
                 case 2:
-                    //TODO convertion fahrenheit en celsius
-                    System.out.println("Fonctionnalité en cours de développement");
+                    do {
+                        again = "";
+
+                        System.out.println("Saisissez la température à convertir :");
+                        temperature = scanner.nextDouble();
+
+                        System.out.println(temperature + " °F correspond à : "
+                                + fahrenheintToCelsius(temperature)
+                                + " °C.");
+
+                        System.out.println("Souhaitez vous convertir une autre température ? (O/N)");
+                        again = scanner.nextLine();
+
+                    } while (again != "O" || again == "N");
                     break;
                 case 99:
                     System.out.println("Merci pour votre utilisation.");
@@ -57,11 +69,20 @@ public class Main {
     }
 
     /**
-     * Convertion d'une température celsius en fahrenheit en donnant la température avec un précision au centième près.
-     * @param celsius la température en celsius
-     * @return la température en fahrenheit
+     * Convertion d'une température celsius en fahrenheit.
+     * @param celsius la température en celsius à convertir
+     * @return la température convertie en fahrenheit
      */
     public static double celsiusToFahrenheit(double celsius){
         return ( celsius * 9.0D/5.0D ) + 32.0D;
+    }
+
+    /**
+     * Convertion d'une température fahrenheit en celsius.
+     * @param fahrenheit la température en fahrenheit à convertir
+     * @return la température convertie en celsius
+     */
+    public static double fahrenheintToCelsius(double fahrenheit){
+        return (fahrenheit - 32D) * 5D/9D;
     }
 }
