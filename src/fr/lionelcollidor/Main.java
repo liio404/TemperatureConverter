@@ -8,36 +8,32 @@ public class Main {
 
     public static void main(String[] args) {
         // variables
-        int convert = 0;
+        int convert;
         String again;
-        double temperature = 0;
+        double temperature;
         // Fin[] variables
 
-        menu();
         do {
+            menu();
             convert = scanner.nextInt();
 
             switch (convert){
                 case 1:
                     do {
-                        again = "";
-
                         System.out.println("Saisissez la température à convertir :");
-                        temperature = scanner.nextDouble();
+                         temperature = scanner.nextDouble();
 
                         System.out.println(temperature + " °C correspond à : "
                                 + celsiusToFahrenheit(temperature)
                                 + " °F.");
 
                         System.out.println("Souhaitez vous convertir une autre température ? (O/N)");
-                        again = scanner.nextLine();
+                        again = scanner.next();
 
-                    } while (again != "O" || again == "N");
+                    } while (!again.equals("N") && again.equals("O"));
                     break;
                 case 2:
                     do {
-                        again = "";
-
                         System.out.println("Saisissez la température à convertir :");
                         temperature = scanner.nextDouble();
 
@@ -46,9 +42,9 @@ public class Main {
                                 + " °C.");
 
                         System.out.println("Souhaitez vous convertir une autre température ? (O/N)");
-                        again = scanner.nextLine();
+                        again = scanner.next();
 
-                    } while (again != "O" || again == "N");
+                    } while (!again.equals("N") && again.equals("O"));
                     break;
                 case 99:
                     System.out.println("Merci pour votre utilisation.");
@@ -59,8 +55,11 @@ public class Main {
             }
 
         } while (convert != 99);
-
     }
+
+    /**
+     * Fonction qui affiche tand le terminal les modes de conversions disponibles
+     */
     public static void menu(){
         System.out.println("Choisissez le mode de conversion :");
         System.out.println("\t1 - Convertisseur Celsius - Fahrenheit");
